@@ -2,5 +2,7 @@ FROM gcr.io/distroless/static:latest
 LABEL maintainers="Kubernetes Authors"
 LABEL description="CSI External Resizer"
 
-COPY ./bin/csi-resizer csi-resizer
+ARG TARGETPLATFORM
+
+COPY ./bin/csi-resizer/${TARGETPLATFORM} csi-resizer
 ENTRYPOINT ["/csi-resizer"]
